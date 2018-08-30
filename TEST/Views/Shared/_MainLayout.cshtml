@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    @* meta viewport for mobile responcive *@
+    <meta name="viewport" content="width=device-width, initial scale=1" />
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../../Content/style.css" rel="stylesheet" />        
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />    
+
+
+
+
+</head>
+<body>
+    <!-- Navbar-->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- If Small => Hide Icons And Replace it With These Button -->
+                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="~/Home/Home" class="navbar-brand" style="color:white">
+                    @*<img src="~/images/logo.png" class="logo-size"/>*@
+                    <i class="glyphicon glyphicon-home"></i>
+                </a>
+            </div>
+
+            <!-- id=navbar has defined in <button> -->
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="~/Admin/Index">
+                            <i class="glyphicon glyphicon-user"></i>
+                            Admin
+                        </a>
+                    </li>  
+                    <li>
+                        <a href="~/Home/Index">
+                            <i class="glyphicon glyphicon-map-marker"></i>
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="~/Home/About">
+                            <i class="glyphicon glyphicon-info-sign"></i>
+                            About                          
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="~/Home/Contact">
+                            <i class="glyphicon glyphicon-envelope"></i>
+                            Contact
+                        </a>
+                    </li>                                      
+                    <li>                         
+                        @*When Press Enter Do These*@
+                        @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+                        {                            
+                            <input type="text" name="searchName" id="searchName" placeholder="Search Here..." />
+                        }                        
+                    </li>
+                </ul>
+
+                <!-- Partial View-->                
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row" style="min-height:570px;">
+
+            @RenderBody()
+             
+        </div>
+    </div>    
+
+    <!--Footer-->
+    
+    <footer class="footer">
+        <div class="container text-center">
+            <div class="text-center center-block">                                
+                <a href="https://www.facebook.com/mohammad.yamen.5"><i id="social-fb" class="fa fa-facebook-square fa-4x social"></i></a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="https://twitter.com/YamenHallak"><i id="social-tw" class="fa fa-twitter-square fa-4x social"></i></a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="https://plus.google.com/u/0/105194146982657229490"><i id="social-gp" class="fa fa-google-plus-square fa-4x social"></i></a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="https://www.linkedin.com/in/yamen-hallak/"><i id="social-in" class="fa fa-linkedin-square fa-4x social"></i></a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="../Home/Contact"><i id="social-em" class="fa fa-envelope-square fa-4x social"></i></a>
+            </div>            
+
+            <br/>
+            <p style="color:white">  Mohammad Yamen Hallak - 2018</p>
+        </div>        
+        <br/>
+        
+    </footer>    
+
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>    
+    
+</body>
+</html>
+

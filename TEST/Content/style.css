@@ -1,0 +1,162 @@
+﻿@font-face {
+    font-family:myFont;
+    src:url('font/GE_SS_Two_Bold.otf')
+}
+
+@font-face {
+    font-family:myFont2;
+    src:url('font/DroidKufi-Regular.ttf')
+}
+
+.navbar-default {
+    background-color: #505050;
+    border-color:#e7e7e7;
+}
+
+/*مثلاً: الرئيسية، اتصل بنا.....*/
+.navbar-default .navbar-nav > li > a {
+    color:#e7e7e7;
+    font-family:myFont;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color:#fff;    
+}
+
+.nav > li {
+    position: relative;
+    display: block;
+    height: 65px;
+    padding-top: 5px;
+}
+
+/*.myfooter {
+    background-color:#505050;
+    /*padding-top:10px;*//*
+    font-family:myFont;
+    text-align:justify;        
+}
+
+.subfooter {
+    background-color:#333333;
+    color:white;
+    /*padding:10px;*//*
+    text-align:center;    
+}
+
+.myfooter a {
+    color:azure;
+}
+
+.myfooter p {
+    color:azure;
+}
+.myfooter h3, ul, p {
+    /*margin-bottom:20px;*//*
+    font-family:myFont2;        
+    list-style-type:none;
+}*/
+
+.logo-size{
+    width:100px;
+    height:45px;    
+    margin-top:-5px    
+}
+
+body{
+    /*margin-bottom:50px;*/
+    font-family:myFont2;
+}
+
+#searchName {
+    width: 130px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    background-image: url('../images/searchicon.png');
+    background-repeat:no-repeat;
+    background-size:20%;
+    background-position:10px;
+    padding:8px 5px 8px 8px;
+    margin-top:7px;
+    transition:width 0.4s ease-in-out;
+}
+
+#searchName:focus{
+    width:100%;
+}
+
+.img-size{
+    font-size:90px;
+}
+
+.navbar-user{
+    padding:10px;
+    padding-bottom:0px;
+    width:350px;
+}
+
+@media (min-width: 992px){
+    .col-md-3{
+        width:23%;
+    }
+}
+
+
+
+
+.footer{
+    padding-top:20px;    
+    background-color:#333333;        
+}
+
+.social:hover {
+     -webkit-transform: scale(1.1);
+     -moz-transform: scale(1.1);
+     -o-transform: scale(1.1);
+ }
+ .social {
+     -webkit-transform: scale(0.8);
+     /* Browser Variations: */
+     
+     -moz-transform: scale(0.8);
+     -o-transform: scale(0.8);
+     -webkit-transition-duration: 0.5s;
+     -moz-transition-duration: 0.5s;
+     -o-transition-duration: 0.5s;
+ }
+
+/*
+    Multicoloured Hover Variations
+*/
+ 
+ #social-fb:hover {
+     color: #2b55ff;
+ }
+ #social-tw:hover {
+     color: #4099FF;
+ }
+ #social-gp:hover {
+     color: #d34836;
+ }
+ #social-em:hover {
+     color: #16a025;
+ }
+ #social-in:hover {
+     color: #0077b5;
+ }
+ #social-fb{
+     color:white;
+ }
+ #social-tw{
+     color:white;
+ }
+ #social-gp{
+     color:white;
+ }
+ #social-em{
+     color:white;
+ }
+ #social-in{
+     color:white;
+ }

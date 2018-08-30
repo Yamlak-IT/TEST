@@ -1,0 +1,41 @@
+﻿@model IEnumerable<TEST.Models.Product>
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<br /><br /><br /><br /><br/>
+    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 style="text-align:center">Search Result About: @ViewBag.SearchValue</h2>
+    </div>
+</div>
+        <br/>
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 col-sm-4">
+            <div class="panel panel-success">
+                <div class="panel-heading text-center">
+                    <h4>@Html.DisplayFor(modelItem => item.Name)</h4>
+                </div>
+                <div class="panel-body">
+
+                    <div class="col-md-12 col-sm-12">
+                        <img src="~/Uploads/@Html.DisplayFor(model=>item.ImageURL)" class="thumbnail img-responsive" />
+                    </div>                    
+
+                    <div class="col-md-12 col-sm-12 text-center">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </div>
+
+                    <div class="col-lg-12 col-sm-12 text-center">
+                        <hr>
+                        <h3>@Html.DisplayFor(modelItem => item.Price) $</h3>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }

@@ -1,0 +1,144 @@
+﻿@model TEST.Models.Product
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <br /><br /><br /><br /><br/><br/>
+    <h3 class="text-center">Product Details</h3>
+@using (Html.BeginForm("Edit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+        @Html.AntiForgeryToken()
+        
+        <div class="form-horizontal">            
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.id)
+
+            @*جلب قيمة الصورة بحال كان المستخدم لايرغب بتغيير الصورة القديمة*@
+            @Html.HiddenFor(model => model.ImageURL)
+            
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @onkeypress = "check_name()" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    <label id="name" style="display:none;color:red"></label>
+
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @onkeypress = "check_description()" } })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    <label id="description" style="display:none;color:red"></label>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", @onkeypress = "Check_price()" } })
+                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                    <label id="price" style="display:none;color:red"></label>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.ImageURL, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="upload"/>
+                    @Html.ValidationMessageFor(model => model.ImageURL, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" id="save" />
+                </div>
+            </div>
+        </div>
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script>
+        $(function () {
+            $("#save").click(function () {
+
+                if ($("#MyImage").val != "") {
+
+                    //Check If The Image Extension  Is Valid
+                    var filename = document.getElementById("MyImage").value;
+                    var extensionImg = filename.substr(filename.lastIndexOf('.') + 1);//flower.png ==> png
+                    var validExtensions = ['GIF', 'gif', 'JPG', 'jpg', 'BMP', 'bmp', 'PNG', 'png', 'JPEG', 'jpeg', 'xif','XIF', 'MP4', 'mp4', '3gp', '3GP', '3gpp', '3GPP', 'avi', 'AVI', 'flv', 'FLV', 'mpeg', 'MPEG', 'WMV', 'wmv', 'MPG', 'mpg', 'MOV', 'mov'];
+                    if ($.inArray(extensionImg, validExtensions) == -1) {
+                        $("#error-div").fadeIn();
+                        $("#view-err").empty();
+                        $("#view-err").append("Please Choose an Image With Valid Extension");
+                        return false;
+                    }
+                }
+
+            });
+        });
+
+        //Check Only English Letters
+        function check_name() {
+            $("#name").hide();
+            if (event.keyCode < 65 || ((event.keyCode > 90) && (event.keyCode < 97)) || (event.keyCode > 122)) {
+                if (event.keyCode != 32)//space charachter
+                    event.returnValue = false;
+                $("#name").empty();
+                $("#name").append("Only English Letters");
+                $("#name").show();
+            }
+        }
+
+        //Check Only English Letters
+        function check_description() {
+            $("#description").hide();
+            if (event.keyCode < 65 || ((event.keyCode > 90) && (event.keyCode < 97)) || (event.keyCode > 122)) {
+                if (event.keyCode != 32)//space charachter
+                    event.returnValue = false;
+                $("#description").empty();
+                $("#description").append("Only English Letters");
+                $("#description").show();
+            }
+        }
+
+        function Check_price() {
+            //Ascii Code: 48 for number 0, 57 for number 9
+
+            //We Handle The event
+            $("#price").hide();
+            if (event.keyCode < 48 || event.keyCode > 57) {
+                event.returnValue = false;
+                $("#price").empty();
+                $("#price").append("Only Numbers");
+                $("#price").show();
+            }
+        }
+
+</script>
